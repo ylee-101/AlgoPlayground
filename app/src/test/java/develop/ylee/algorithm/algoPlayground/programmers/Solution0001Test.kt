@@ -7,14 +7,14 @@ class Solution0001Test {
     private val solution = Solution0001()
 
     @Test
-    fun test1() {
+    fun `returns correct order for plans with different times`() {
         val plans = arrayOf(arrayOf("korean", "11:40", "30"), arrayOf("english", "12:10", "20"), arrayOf("math", "12:30", "40"))
         val expected = arrayOf("korean", "english", "math")
         assertArrayEquals(expected, solution.solution(plans))
     }
 
     @Test
-    fun test2() {
+    fun `returns correct order for plans with same times but different durations`() {
         val plans =
             arrayOf(
                 arrayOf("science", "12:40", "50"),
@@ -27,14 +27,14 @@ class Solution0001Test {
     }
 
     @Test
-    fun test3() {
+    fun `returns correct order for plans with same times and same durations`() {
         val plans = arrayOf(arrayOf("aaa", "12:00", "20"), arrayOf("bbb", "12:10", "30"), arrayOf("ccc", "12:40", "10"))
         val expected = arrayOf("bbb", "ccc", "aaa")
         assertArrayEquals(expected, solution.solution(plans))
     }
 
     @Test
-    fun test4() {
+    fun `returns empty array for empty plans`() {
         val plans = arrayOf<Array<String>>()
         val expected = arrayOf<String>()
         assertArrayEquals(expected, solution.solution(plans))
