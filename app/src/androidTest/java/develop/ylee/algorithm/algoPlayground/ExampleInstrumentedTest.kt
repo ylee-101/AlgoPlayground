@@ -1,4 +1,4 @@
-package develop.ylee.algorithm.algoPlayground
+package develop.ylee.algorithm.algoplayground
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("develop.ylee.algorithm.algoPlayground", appContext.packageName)
+        assertEquals("develop.ylee.algorithm.algoplayground", appContext.packageName)
     }
 }

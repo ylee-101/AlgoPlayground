@@ -1,4 +1,4 @@
-package develop.ylee.algorithm.algoPlayground
+package develop.ylee.algorithm.algoplayground
 
 import org.junit.Test
 
