@@ -1,10 +1,24 @@
 package develop.ylee.algorithm.algoplayground.programmers
 
 import org.junit.Assert.assertArrayEquals
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class Solution0001Test {
     private val solution = Solution0001()
+
+    @Test
+    fun `returns plan data class from string array`() {
+        val planArray = arrayOf("korean", "11:40", "30")
+        val expected = Plan(
+                name = "korean",
+                startTime = 11*60 + 40,
+                duration = 30,
+                leftTime = 30,
+                status = PlanStatus.WAIT
+            )
+        assertEquals(expected, solution.toPlan(planArray))
+    }
 
     @Test
     fun `returns correct order for plans with different times`() {
