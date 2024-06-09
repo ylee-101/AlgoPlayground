@@ -10,16 +10,15 @@ data class Plan(
     val name : String,
     val startTime : Int,
     val duration : Int,
+    var endTime : Int = startTime + duration,
     var restartTime : Int = startTime,
     var leftTime : Int = duration,
     var status : PlanStatus = PlanStatus.WAIT
 ) {
 
-    fun process() {
-        leftTime -= 1
-        if (leftTime == 0) end()
-    }
-    fun pause() {
+    fun pause(curTime: Int) {
+        val dueTime = curTime - restartTime
+        leftTime -= dueTime
         if (leftTime > 0) {
             this.status = PlanStatus.PAUSE
         } else {
@@ -37,13 +36,16 @@ data class Plan(
         }
     }
 
-    fun reActivate() {
+    fun reActivate(curTime: Int) {
+        restartTime = curTime
+        endTime = restartTime + leftTime
         if (this.status == PlanStatus.PAUSE) {
             this.status = PlanStatus.ACTIVATE
         }
     }
 
-    fun isActivate(): Boolean {
+    fun isActivate(curTime: Int): Boolean {
+        if (endTime <= curTime) status = PlanStatus.END
         return status == PlanStatus.ACTIVATE
     }
 }
