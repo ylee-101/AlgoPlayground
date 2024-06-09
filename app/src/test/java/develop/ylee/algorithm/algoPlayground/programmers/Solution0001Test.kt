@@ -23,7 +23,7 @@ class Solution0001Test {
     @Test
     fun `returns plan array from string array array`() {
         val planArray = arrayOf(arrayOf("english", "12:10", "20"), arrayOf("math", "12:30", "40"), arrayOf("korean", "11:40", "30"))
-        val expected: List<Plan> = listOf(
+        val expected: Array<Plan> = arrayOf(
             solution.convertToPlan(planArray[2]),
             solution.convertToPlan(planArray[0]),
             solution.convertToPlan(planArray[1])

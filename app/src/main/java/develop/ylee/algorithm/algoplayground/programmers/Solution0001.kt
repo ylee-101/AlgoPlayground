@@ -9,6 +9,7 @@ class Solution0001 {
 
     fun solution(plans: Array<Array<String>>): Array<String> {
         val planList = planArrayToPlanList(plans)
+        endList = Array(planList.size){ idx -> ""}
         println(planList.toString())
         startPlan(planList)
         return endList
@@ -17,6 +18,7 @@ class Solution0001 {
     fun startPlan(planList: Array<Plan>) {
         var curPlan : Plan? = null
         var planIdx = 0
+        var endIdx = 0
         val startTime = planList.getOrNull(0)?.startTime?:0
         val endTime = 23*60 + 59
         for (curTime in startTime..endTime) {
@@ -29,7 +31,7 @@ class Solution0001 {
             *
             * */
             if (curPlan != null && !curPlan.isActivate()) {
-                endList = endList.plus(curPlan.name)
+                endList[endIdx++] = curPlan.name
                 curPlan = null
             }
 
@@ -51,11 +53,11 @@ class Solution0001 {
             curPlan?.process()
         }
         if (curPlan != null) {
-            endList = endList.plus(curPlan!!.name)
+            endList[endIdx++] = curPlan!!.name
         }
         while (waitList.isNotEmpty()) {
             val waitPlan = waitList.pop()
-            endList = endList.plus(waitPlan.name)
+            endList[endIdx++] = waitPlan.name
         }
     }
 
