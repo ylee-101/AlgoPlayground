@@ -1,8 +1,5 @@
 package develop.ylee.algorithm.algoplayground.programmers
 
-import android.util.Log
-import java.lang.Exception
-
 enum class PlanStatus{
     WAIT, ACTIVATE, PAUSE, END
 }
@@ -37,15 +34,10 @@ data class Plan(
     }
 
     fun reActivate(curTime: Int) {
-        restartTime = curTime
-        endTime = restartTime + leftTime
         if (this.status == PlanStatus.PAUSE) {
+            restartTime = curTime
+            endTime = restartTime + leftTime
             this.status = PlanStatus.ACTIVATE
         }
-    }
-
-    fun isActivate(curTime: Int): Boolean {
-        if (endTime <= curTime) status = PlanStatus.END
-        return status == PlanStatus.ACTIVATE
     }
 }
