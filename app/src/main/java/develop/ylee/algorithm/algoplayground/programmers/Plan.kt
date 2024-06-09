@@ -32,26 +32,14 @@ data class Plan(
     }
 
     fun activate() {
-        try {
-            if (status == PlanStatus.WAIT) {
-                status = PlanStatus.ACTIVATE
-            } else {
-                throw Exception("status is not WAIT. cur status is " + status)
-            }
-        } catch (e: Exception) {
-            Log.e("Plan_activate", e.toString())
+        if (status == PlanStatus.WAIT) {
+            status = PlanStatus.ACTIVATE
         }
     }
 
     fun reActivate() {
-        try {
-            if (this.status == PlanStatus.PAUSE) {
-                this.status = PlanStatus.ACTIVATE
-            } else {
-                throw Exception("status is not PAUSE. cur status is " + status)
-            }
-        } catch (e: Exception) {
-            Log.e("Plan_reActivate", e.toString())
+        if (this.status == PlanStatus.PAUSE) {
+            this.status = PlanStatus.ACTIVATE
         }
     }
 

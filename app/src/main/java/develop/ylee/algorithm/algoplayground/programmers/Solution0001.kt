@@ -14,7 +14,7 @@ class Solution0001 {
         return endList
     }
 
-    fun startPlan(planList: List<Plan>) {
+    fun startPlan(planList: Array<Plan>) {
         var curPlan : Plan? = null
         var planIdx = 0
         val startTime = planList.getOrNull(0)?.startTime?:0
@@ -60,12 +60,11 @@ class Solution0001 {
     }
 
 
-    fun planArrayToPlanList(planArray: Array<Array<String>>): List<Plan> {
-        var tmpPlans = listOf<Plan>()
-        planArray.forEach { plan ->
-            tmpPlans = tmpPlans.plus(convertToPlan(plan))
+    fun planArrayToPlanList(planArray: Array<Array<String>>): Array<Plan> {
+        var tmpPlans = Array(planArray.size) { idx ->
+            convertToPlan(planArray[idx])
         }
-        tmpPlans = tmpPlans.sortedBy { it.startTime }
+        tmpPlans.sortBy { it.startTime }
         return tmpPlans
     }
 
