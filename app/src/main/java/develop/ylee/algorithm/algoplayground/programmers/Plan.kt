@@ -14,10 +14,13 @@ data class Plan(
     var leftTime : Int = duration,
     var status : PlanStatus = PlanStatus.WAIT
 ) {
-    fun pause(curTime: Int) {
-        val dueTime = curTime - restartTime
-        if (leftTime > dueTime) {
-            leftTime -= dueTime
+
+    fun process() {
+        leftTime -= 1
+        if (leftTime == 0) end()
+    }
+    fun pause() {
+        if (leftTime > 0) {
             this.status = PlanStatus.PAUSE
         } else {
             end()
@@ -28,10 +31,9 @@ data class Plan(
         this.status = PlanStatus.END
     }
 
-    fun activate(curTime : Int) {
+    fun activate() {
         try {
             if (status == PlanStatus.WAIT) {
-                restartTime = curTime
                 status = PlanStatus.ACTIVATE
             } else {
                 throw Exception("status is not WAIT. cur status is " + status)
@@ -41,10 +43,9 @@ data class Plan(
         }
     }
 
-    fun reActivate(curTime : Int) {
+    fun reActivate() {
         try {
             if (this.status == PlanStatus.PAUSE) {
-                restartTime = curTime
                 this.status = PlanStatus.ACTIVATE
             } else {
                 throw Exception("status is not PAUSE. cur status is " + status)
@@ -52,5 +53,9 @@ data class Plan(
         } catch (e: Exception) {
             Log.e("Plan_reActivate", e.toString())
         }
+    }
+
+    fun isActivate(): Boolean {
+        return status == PlanStatus.ACTIVATE
     }
 }
