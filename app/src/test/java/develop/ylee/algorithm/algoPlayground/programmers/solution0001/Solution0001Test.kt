@@ -1,5 +1,8 @@
-package develop.ylee.algorithm.algoplayground.programmers
+package develop.ylee.algorithm.algoplayground.programmers.solution0001
 
+import develop.ylee.algorithm.algoplayground.programmers.solution0001.Plan
+import develop.ylee.algorithm.algoplayground.programmers.solution0001.PlanStatus
+import develop.ylee.algorithm.algoplayground.programmers.solution0001.Solution0001
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Test
