@@ -1,4 +1,4 @@
-package develop.ylee.algorithm.algoplayground.programmers
+package develop.ylee.algorithm.algoplayground.programmers.solution0001
 
 import java.util.Stack
 
