@@ -11,6 +11,13 @@ class Solution0003 {
     var stones: IntArray = intArrayOf()
     fun solution(stones: IntArray, k: Int): Int {
         if (stones.size == 1) return stones[0]
+        if (stones.size < 100) {
+            var answer  = min
+            while (solveThisCase(stones, k, answer)) {
+                answer++
+            }
+            return answer
+        }
         var minAsw = min
         var maxAsw = max
         var answer = (min + max) / 2
