@@ -3,10 +3,6 @@ package develop.ylee.algorithm.algoplayground.programmers.solution0003
 class Solution0003 {
     var stones: IntArray = intArrayOf()
     fun solution(stones: IntArray, k: Int): Int {
-        val stoneList = stones.toList()
-        val min = stoneList.minOrNull()?:0
-        val max = stoneList.maxOrNull()?:0
-        if (min == max) return stones.size
         var answer = 0
         this.stones = stones
         while (goStones(k)) {
