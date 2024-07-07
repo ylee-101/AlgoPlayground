@@ -10,13 +10,19 @@ class Solution0003 {
     val max = 200000000
     var stones: IntArray = intArrayOf()
     fun solution(stones: IntArray, k: Int): Int {
-        // max 보다 큰 경우 개수 세기
+        if (stones.size == 1) return stones[0]
+        var minAsw = min
         var maxAsw = max
-        while (!solveThisCase(stones, k, maxAsw)) {
-            maxAsw = maxAsw / 2
-        }
-        while (solveThisCase(stones, k, maxAsw)) {
-            maxAsw++
+        var answer = (min + max) / 2
+        while (minAsw < answer && answer < maxAsw) {
+            val more = solveThisCase(stones, k, answer)
+            if (more) {
+                minAsw = answer
+                answer = (minAsw + maxAsw) / 2
+            } else {
+                maxAsw = answer
+                answer = (minAsw + maxAsw) / 2
+            }
         }
         return maxAsw
     }
