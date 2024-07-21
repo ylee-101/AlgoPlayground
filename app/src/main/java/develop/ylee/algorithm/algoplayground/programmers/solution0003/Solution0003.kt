@@ -1,26 +1,25 @@
 package develop.ylee.algorithm.algoplayground.programmers.solution0003
 
-import android.util.Half
-
-enum class STATUS {
-    LEFT, RIGHT,
-}
 class Solution0003 {
-    val min = 1
-    val max = 200000000
     var stones: IntArray = intArrayOf()
     fun solution(stones: IntArray, k: Int): Int {
-        if (stones.size == 1) return stones[0]
+        var arrayMin = 200000000
+        var arrayMax = 1
+        for (stone in stones) {
+            if (stone < arrayMin) arrayMin = stone
+            if (stone > arrayMax) arrayMax = stone
+        }
+        if (arrayMin == arrayMax) return arrayMin
         if (stones.size < 100) {
-            var answer  = min
+            var answer  = arrayMin
             while (solveThisCase(stones, k, answer)) {
                 answer++
             }
             return answer
         }
-        var minAsw = min
-        var maxAsw = max
-        var answer = (min + max) / 2
+        var minAsw = arrayMin
+        var maxAsw = arrayMax
+        var answer = (minAsw + maxAsw) / 2
         while (minAsw < answer && answer < maxAsw) {
             val more = solveThisCase(stones, k, answer)
             if (more) {
@@ -30,6 +29,11 @@ class Solution0003 {
                 maxAsw = answer
                 answer = (minAsw + maxAsw) / 2
             }
+        }
+        if (minAsw == answer) {
+
+        } else if (answer == maxAsw) {
+
         }
         return maxAsw
     }
