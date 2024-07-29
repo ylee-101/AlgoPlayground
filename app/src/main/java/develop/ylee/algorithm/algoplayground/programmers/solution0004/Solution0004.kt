@@ -1,4 +1,4 @@
-package develop.ylee.algorithm.algoplayground.programmers.solution0003
+package develop.ylee.algorithm.algoplayground.programmers.solution0004
 
 class Solution0004 {
     fun solution(name: String): Int {
